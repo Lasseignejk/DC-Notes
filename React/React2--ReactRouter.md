@@ -30,9 +30,9 @@ Sometimes our functions look like this and sometimes they have
         return blah blah blah
     }
 
-So what's the difference? Do we need both of those exports, one in front of the function and one at the end? do we only need one?
+So what's the difference? Do we need both of those exports, one in front of the function and one at the end? Do we only need one?
 
-If you use export in front of the function, when you import it on your app.jsx, you need to put it in {}
+If you use export in front of the function, when you import it on your App.jsx, you need to put it in {}
 
     import { function } from "./blah"
 
@@ -85,7 +85,7 @@ Delete the div and add <Routes>
 
     }
 
-THen inside routes, make a singular route, add a path and an element which is the component.
+Then inside routes, make a singular route, add a path and an element which is the component.
 
     function App() {
         return (
@@ -103,7 +103,7 @@ In Navbar.jsx, import:
 
     import { Link } from "react-router-dom";
 
-This lets us use link tages! Throw some in the return:
+This lets us use link tags! Throw some in the return:
 
     function Navbar() {
         return (
@@ -149,7 +149,7 @@ You should see your navbar render on the screen! If you want your navbar to look
 
     export default Navbar;
 
-So now we have a navbar. But what if someone goes up to the url and types in gibberish? It just renders "home." Instead, let's make a new component for error page.
+So now we have a navbar. But what if someone goes up to the url and types in gibberish? It just renders "home." Instead, let's make a new component for an error page.
 
     import React from "react";
 
