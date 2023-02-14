@@ -57,7 +57,7 @@ This import exports a variable called store.
 
 Inside src, make a new folder called 'reducers'. Inside here you define your functions and your state.
 
-Inside reducers, make a file named Counter.js or CounterSlice.js. W're gonna do two things here. First, import:
+Inside reducers, make a file named Counter.js or CounterSlice.js. We're going to do two things here. First, import:
 
     import {createSlice} from "@reduxjs/toolkit"
 
@@ -85,11 +85,15 @@ Next:
         },
     });
 
+Then export all of the reducers you made, like this:
+
     export const { increment, decrement, incrementByAmount } = counterSlice.actions;
+
+Finally, export default:
 
     export default counterSlice.reducer;
 
-Go to store now. Import:
+Now we're going to move to store.js. Import:
 
     import counterReducer from "./reducers/counterSlice"
 
@@ -150,3 +154,8 @@ Then in the counterSlice:
     	},
 
 So the 2 passed in the userSettings goes to that function on counterSlice, goes into the action argument, which is an object, and that 2 is stored as a value with the key of payload.
+
+## Anytime you want to change state, call dispatch. Then you have a way to track it.
+
+<br>
+You can still use the useState hook along with redux, but the important pieces of info should be in redux.
