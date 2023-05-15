@@ -58,7 +58,3 @@ From the docs:
 ### globals.css 
 Houses the css for the app
 
-## Routing System
-All you need to create a route is to add a folder inside the app folder, with the name of the route. 
-
-23.18
