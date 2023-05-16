@@ -6,6 +6,8 @@
 
 - This creates the package.json file. It has the details of all the tools you've downloaded, like 'express' or 'cowsay'
 
+- This is just a settings file, an object with a bunch of keys and values. You can change everything in here, you might break something so be careful.
+
 - If you don't want to have to hit enter a whole bunch of times, you can just write `npm init -y` and it skips all of that; assumes you want the default
 
 ## Step 2
@@ -40,6 +42,8 @@
 
 - `node --watch nameoffile.js` will update the server as you change it. MAKE SURE YOU CLOSE YOUR SERVERS before you close your computer
 
+- Express is just a tool used with node to make servers.
+
 ## Step 4
 
 4. Your code needs to have this in it for your server to be ready to start making routes.
@@ -54,11 +58,12 @@ app.listen(PORT, console.log(`Listening on port ${PORT}`));
 
 ## Step 5
 
-5. Run `node --watch app.js` and you should see your console.log in your termianl showing your port is ready to accept request.
+5. Run `node --watch app.js` and you should see your console.log in your terminal showing your port is ready to accept request.
 
 ## Step 6 routes
+- A route is a path for your server to do a specified action. Generally a route has a HTTP Method that is required to access it.
 
-- this is a basic route
+- This is a basic route
 
 ```
 app.get("/jaye", (req, res) => {
@@ -66,4 +71,10 @@ app.get("/jaye", (req, res) => {
 });
 ```
 
-- if you put a console.log instead of a response, the request will never finish. Infinity. every route needs a RESPONSE.
+- If you put a console.log instead of a response, the request will never finish. Infinity. Every route needs a RESPONSE.
+
+- Each route can have only ONE response. If you have more than one you'll get an error. You can also chain onto the response. 
+`res.status(401).send("Nope")`
+
+## To send data to the server...
+postman --> body --> raw --> JSON
