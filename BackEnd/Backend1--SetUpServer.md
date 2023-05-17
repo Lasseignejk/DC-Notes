@@ -74,7 +74,14 @@ app.get("/jaye", (req, res) => {
 - If you put a console.log instead of a response, the request will never finish. Infinity. Every route needs a RESPONSE.
 
 - Each route can have only ONE response. If you have more than one you'll get an error. You can also chain onto the response. 
+
+- Don't use spaces or - in route names, use _ instead. 
 `res.status(401).send("Nope")`
 
 ## To send data to the server...
 postman --> body --> raw --> JSON
+
+## Parts of backend 
+Backend has two parts -- the server and the database. 
+
+Server receives a request, goes to the database, finds the data, and serves it to the client. 
