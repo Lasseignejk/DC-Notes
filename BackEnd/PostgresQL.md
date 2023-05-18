@@ -139,8 +139,8 @@ Be careful making tables with relationships. Make sure you make the parent table
     );
     
     CREATE TABLE registrations (
-    student_id INT REFERENCES students(student_id),
-    course_id INT REFERENCES courses(course_id),
+    FOREIGN KEY student_id INT REFERENCES students(student_id),
+    FOREIGN KEY course_id INT REFERENCES courses(course_id),
     CONSTRAINT registrations_pk PRIMARY KEY(student_id,course_id));
     
     INSERT INTO students(name) VALUES ('Jim');
