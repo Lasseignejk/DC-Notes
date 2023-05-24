@@ -90,7 +90,9 @@ Should print `UPDATE 1`
 
 # Deleting 
 `DELETE FROM table_name WHERE condition`
+
 `DELETE FROM Pets WHERE name='Pancho';`
+
 `DELETE FROM Pets WHERE species='cat';`
 
 Should print `DELETE 1`

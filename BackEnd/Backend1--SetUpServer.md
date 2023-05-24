@@ -79,6 +79,8 @@ app.get("/jaye", (req, res) => {
 `res.status(401).send("Nope")`
 
 ## To send data to the server...
+`app.use(express.json())`
+
 postman --> body --> raw --> JSON
 
 ## Parts of backend 

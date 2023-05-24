@@ -3,15 +3,16 @@
 [npm sequelize documentation](https://www.npmjs.com/package/sequelize-cli#documentation)
 
 # Sequelize
+Sequelize is an ORM tool -- Object-Relational Mapping 
 
 Worst-case scenario, if you mess up the sequelize, drop the table and try it again. It is much harder to do when there is data already in the table, so leave that for last once you have everything already set up.
 
 ## Set up Sequelize
 
+    npm install sequelize
     npm install --save-dev sequelize-cli
-    npm i express sequelize pg
+    npm i express pg dotenv
     npx sequelize init
-    npm i dotenv (we didn't end up using)
 
 This creates the config.json file.
 
@@ -76,7 +77,11 @@ Pets has a 1:1 relationship with the table Owners. The foreign key on the Owners
 
 The table Owners belongs to Pets, meaning Pets is the parent table and Owners is the child. The foreign key tying them together is located on Owners. It is called 'pet'. If a pet is deleted on the Pets table, then that deletion will cascade to the Owner table and delete the associated owner as well.
 
+We can also do onUpdate: "CASCADE" so if the userId updates, it'll update there as well
+
 ### The migration file
+
+The code in the migration file is what actually makes the table. The model is just the table in JS form. 
 
 On the migration file, you can set things like allowNull: true/false, primaryKey: true/false, etc.
 
