@@ -21,6 +21,18 @@ If using FontAwesome:
     npm i --save @fortawesome/free-regular-svg-icons
     npm i --save @fortawesome/react-fontawesome@latest
 
+If using React Icons: 
+
+    npm i react-icons --save 
+
+[documentation](https://react-icons.github.io/react-icons/)
+
+If using Toastify: 
+
+    npm i --save react-toastify
+
+[documentation](https://www.npmjs.com/package/react-toastify)
+
 ## Delete
 
 - Delete the assets folder inside 'src'
