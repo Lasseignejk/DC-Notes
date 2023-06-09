@@ -78,4 +78,8 @@ middleware/cookieJwtAuth.js
         }
     }
 
-The middleware here looks at the cookie, extracts the token, and compares the secret. 
+The middleware here looks at the cookie, extracts the token, decodes it, and compares the secret. 
+
+If the secret is correct and the token hasn't expired yet, then it stores the user's information inside of the req.user which you can use on pages. 
+
+If something is wrong with the token, it clears the cookie out and redirects to the home page etc. 
