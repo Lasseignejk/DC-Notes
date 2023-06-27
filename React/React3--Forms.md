@@ -99,7 +99,7 @@ Give each input a value. The value should be something like this:
 
 Now if we go and change the state, it also changes it on the UI.
 
-If you do not have an onchange function but have a default value, you'll get a warning in the console.
+If you do not have an onchange function but have a default value, you'll get a warning in the console. You ALSO won't be able to change the state by typing in the input field. You CAN'T type in the input field. You can only update it by changing the state directly. So for a form to be controlled you need BOTH an onChange and a value.
 
 It's signUpForm.username because we gave that input a name of username. (name="username)
 
@@ -135,3 +135,32 @@ Toast makes nice little popup alerts so we don't need to use the window alerts
 (Toastify website)[https://www.npmjs.com/package/react-toastify]
 
 ## Setting up the backend
+
+## UseEffect
+We use useEffect to run something immediately on page load. It ensures you get data back and you can use the data. When the component is mounted, it runs this function immediately. 
+
+    useEffect(() => {
+          const fetchDitto = async () => {
+				const getDitto = await fetch(
+					"https://pokeapi.co/api/v2/pokemon/ditto"
+				);
+				const jsonDitto = await getDitto.json();
+				setDitto(jsonDitto);
+			};
+      fetchDitto();
+    },[])
+
+DO NOT SET STATE INSIDE OF A USE EFFECT -- if you do, you'll trigger an infinite rerender. Doing it inside of a function like we have it is ok, but putting 'setDitto' underneath the 'fetchDito' on line 20 will cause an infinite rerender.
+
+    // DON'T RUN THIS
+    useEffect(() => {
+        const fetchDitto = async () => {
+				const getDitto = await fetch(
+					"https://pokeapi.co/api/v2/pokemon/ditto"
+				);
+				const jsonDitto = await getDitto.json();
+				setDitto(jsonDitto);
+			};
+      fetchDitto();
+      setDitto(jsonDitto);
+    })
