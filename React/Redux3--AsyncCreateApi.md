@@ -1,6 +1,10 @@
-[docs](https://redux-toolkit.js.org/rtk-query/overview)
+📂 TA-work/week11/day2/morning/vite-project
+
+📓 [docs](https://redux-toolkit.js.org/rtk-query/overview) 
 # RTK Query and create API
 DON'T use RTK Query AND thunks in the same app. Pick one, stick with it. 
+
+## The Slice
 
     import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
@@ -13,7 +17,6 @@ DON'T use RTK Query AND thunks in the same app. Pick one, stick with it.
             }),
         }),
     });
-    console.log(fetchPokemon2);
 
     export const { useGetPokemonQuery, useLazyGetPokemonQuery } = fetchPokemon2;
 
@@ -25,37 +28,38 @@ The `baseUrl` does the BASE stuff. It's the part of the api url that doesn't cha
 
 You HAVE to have an endpoint. The `/pokemon` will be added to the end of the base url. So when you run getPokemon, the url now looks like `http://pokeapi/co/api/v2/pokemon`
 
-If you console.log (fetchPokemon2), you'll see that it creates an object with the queries, middleware, reducers, etc.
+If you `console.log(fetchPokemon2)``, you'll see that it creates an object with the queries, middleware, reducers, etc.
 
-`useGet` will run immediately, every time it mounts. `useLazy` will wait for an event to trigger.
+`useGet` will run immediately, every time the component mounts. `useLazy` will wait for an event to trigger.
 
 
 ## Configure the store
     import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
     import logger from "redux-logger";
 
-    import counterReducer from "./reducers/counterSlice";
     import pokeReducer from "./reducers/pokeSlice";
-    import productsReducer from "./reducers/productsSlice";
 
     import fetchPokemon2 from "./reducers/pokemonCreateAPISlice";
 
     export const store = configureStore({
         reducer: {
-            counter: counterReducer,
+            // reducer created with asyncThunk
             poke: pokeReducer,
-            products: productsReducer,
+
+            // reducer made with createApi
             [fetchPokemon2.reducerPath]: fetchPokemon2.reducer,
         },
         middleware: (getDefaultMiddleware) =>
             getDefaultMiddleware().concat(logger).concat(fetchPokemon2.middleware),
     });
 
-The `[]` on the `[fetchPokemon2Reducer]` part says that the stuff in the `[]` is a variable. 
+The `[]` on the `[fetchPokemon2Reducer]` is an example of `computed property names` in JavaScript. More information in <strong>Redux2--LoggerAndThunks</strong>.
+
+⚠️ In addition to setting up the reducer differently, you also have to update the middleware.
 
 By default, createAPI will create the state variable and the initial state for you. 
 
-from the redux dev tools: 
+From the redux dev tools: 
     fetchPokemon2
         queries: {}
         mutations: {}
@@ -63,10 +67,13 @@ from the redux dev tools:
         subscriptions: {}
 
 ## In App.jsx
+### Example with `useLazy`
+
     import {useLazyGetPokemonQuery} from "./reducers/pokemonCreateAPISlice
 
     function App() {
         const [trigger, {data, isLoading, error}] = useLazyGetPokemonQuery();
+        console.log(data)
 
         const handleClick = () => {
             trigger()
@@ -80,3 +87,19 @@ from the redux dev tools:
 			</button>
         )
     }
+
+The data will show in the console once you click the button.
+
+### Example with `useGet`
+    import {useGetPokemonQuery} from "./reducers/pokemonCreateAPISlice
+
+    function App() {
+        const {data, error} = useGetPokemonQuery()
+        console.log(data)
+
+        return (
+            <p>Example with `useGet`</p>
+        )
+    }
+
+Because `useGet` runs immediately, you'll see the data in the console when the page loads.
