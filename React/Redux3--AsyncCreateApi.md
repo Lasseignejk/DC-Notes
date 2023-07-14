@@ -1,6 +1,6 @@
 📂 TA-work/week11/day2/morning/vite-project
 
-📓 [docs](https://redux-toolkit.js.org/rtk-query/overview) 
+📓 [RTK Query Docs](https://redux-toolkit.js.org/rtk-query/overview) 
 # RTK Query and create API
 DON'T use RTK Query AND thunks in the same app. Pick one, stick with it. 
 

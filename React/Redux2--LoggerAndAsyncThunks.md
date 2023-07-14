@@ -1,7 +1,7 @@
 📂 TA-work/week11/day2/morning/vite-project
 
 # ✨ Logger ✨ 
-📓 [docs for logger](https://www.npmjs.com/package/redux-logger)
+📓 [Docs for logger](https://www.npmjs.com/package/redux-logger)
 
 Logger middleware keeps track of your dispatched actions. 
 
@@ -35,6 +35,8 @@ Middleware goes after your reducers, like this:
 
 # Thunk 
 A middleware often used with redux, thunks are functions that can be delayed from executing.  
+
+👉👉👉 [Diagram for where thunk fits into the redux flow](https://redux.js.org/tutorials/fundamentals/part-6-async-logic)
 
 Normally, Redux actions are plain objects that describe an event that occurred and are immediately dispatched to the reducers. However, with thunks, you can dispatch functions instead of plain objects. These functions are called thunks.
 
@@ -152,3 +154,38 @@ So when the `fetchPokemon` action is dispatched and the api call is initiated, t
     export default productsSlice.reducer;
 
 The spread operator is used to keep everything in the object the same, but then we update the items to be equal to the parsedItems. This might not be needed, depending on the shape of the data that comes back.
+
+### App.js
+
+    import { useSelector, useDispatch } from "react-redux";
+    import {fetchProducts} from "./reducers/productSlice";
+
+    function App() {
+    	const { values } = useSelector((state) => state.products);
+        const dispatch = useDispatch();
+
+        return (
+            <>
+                <button
+                    onClick={() => dispatch(fetchProducts())}>
+                        Fetch Products
+                </button>
+                <div className="flex flex-wrap justify-center gap-5">
+                    {values.length != 0 &&
+                        values?.map((item) => (
+                            <div
+                                key={item.id}
+                                className="flex flex-col w-36 text-center rounded-2xl shadow-xl top_shadow hover:scale-105 duration-100 ease-in">
+                                <p className="text-xl underline">{item.name}</p>
+                                <div>
+                                    {item.items != null &&
+                                        item?.items?.map((product) => (
+                                            <p>{product.description}</p>
+                                        ))}
+                                </div>
+                            </div>
+                        ))}
+                </div>
+            </>
+        )
+    }

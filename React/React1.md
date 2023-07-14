@@ -6,7 +6,7 @@ Used to use Create React App (CRA). But it was always slow, so now we use Vite
 
 # Vite
 
-[](https://vitejs.dev/guide/)
+[Vite docs](https://vitejs.dev/guide/)
 
     npm create vite@latest
 

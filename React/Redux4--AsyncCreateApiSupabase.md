@@ -1,6 +1,6 @@
 📂 EsportsData
 
-[Stack Overflow](https://stackoverflow.com/questions/70700188/how-to-use-redux-rtk-query-with-supabase)
+📓 [Helpful Stack Overflow Post](https://stackoverflow.com/questions/70700188/how-to-use-redux-rtk-query-with-supabase)
 
 # Using RTK createApi with Supabase
 In `Redux3`, we learned that one of the things createApi needs to work is a `baseQuery`, the part of the url that doesn't change when you do an API call. But what if our fetch is to a database? 
