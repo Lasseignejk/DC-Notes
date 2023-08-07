@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.form_input {
+	display: flex;
+	gap: 10px;
+	position: relative;
+}
+
+.error {
+	color: red;
+	font-size: small;
+}
+
+.text_input {
+	border-bottom: 1px solid gray;
+}
