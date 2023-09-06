@@ -2,7 +2,7 @@
 
 📂 functions.js
 
-🔗 [function files on GitHub]()
+🔗 [function files on GitHub](https://github.com/Lasseignejk/DC-Notes/tree/main/JS/functions)
 
 Functions have three parts -- a name, parameters, and a body.
 
