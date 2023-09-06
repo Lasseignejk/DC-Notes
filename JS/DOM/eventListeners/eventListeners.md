@@ -2,7 +2,7 @@
 
 📂 eventListeners.js, eventListeners.html
 
-🔗 [eventListeners files on GitHub]()
+🔗 [eventListeners files on GitHub](https://github.com/Lasseignejk/DC-Notes/tree/main/JS/DOM/eventListeners)
 
 🔬 [lab](https://github.com/DigitalCraftsStudents/js-lab-event-handling-exercises)
 
