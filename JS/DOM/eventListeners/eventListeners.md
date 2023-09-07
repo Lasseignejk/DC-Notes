@@ -29,7 +29,9 @@ EventListeners take <strong>two things</strong> -- an event and a function. In t
 
 ## Anonymous Functions
 
-❓ What happens when we run this in the browser? The console has "clicked" written in it, <strong>even though we didn't click the button.</strong> And even if we click on the button, nothing happens in the console! We need to <strong>wait</strong> for the event to run the function. To tell it to wait, you need an `anonymous function`. We can rewrite the EventListener like this, with an arrow function:
+❓ What happens when we run this in the browser?
+
+👉 The console has "clicked" written in it, <strong>even though we didn't click the button.</strong> And even if we click on the button, nothing happens in the console! We need to <strong>wait</strong> for the event to run the function. To tell it to wait, you need an `anonymous function`. We can rewrite the EventListener like this, with an arrow function:
 
     button.addEventListener("click", () => console.log("clicked))
 

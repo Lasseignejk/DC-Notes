@@ -23,7 +23,7 @@ Parameters are like placeholders -- everywhere you have a parameter variable in 
 
 Here we've declared a function. It's called `addTwoNums`. We declared it with two parameters -- `num1` and `num2`. We could call them whatever we want, but `num1` and `num2` are meaningful and helpful for anyone who uses this function.
 
-When we call the function, `addTwoNums(36, 79)`, `num1` <em>becomes<em> 36. Everywhere in the function body that we see `num1` used, that will become `36` when we run the function. You can think of the function as now looking like this:
+When we call the function, `addTwoNums(36, 79)`, `num1` <em>becomes</em> 36. Everywhere in the function body that we see `num1` used, that will become `36` when we run the function. You can think of the function as now looking like this:
 
     function addTwoNums(36, 79) {
         const total = 36 + 79 // 115

@@ -1,8 +1,8 @@
 const dogs = ["husky", "boxer", "lab", "golden", "pug"];
 
 // .push()
-// dogs.push("bulldog");
-// console.log(dogs);
+dogs.push("bulldog");
+console.log(dogs);
 
 // .pop()
 // const removeBulldog = dogs.pop();
