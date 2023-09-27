@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>HTML Elements</title>
+		<link rel="stylesheet" href="htmlElements.css" />
+	</head>
+	<body>
+		<h1>HTML Elements</h1>
+		<div>
+			<h3>Elements with an opening and closing tag</h3>
+			<p>This is a paragraph tag</p>
+			<button>Click me, I'm a button!</button>
+			<h6>This is a very very small header</h6>
+		</div>
+		<div class="selfClosingDiv">
+			<h3>Self-Closing Tags</h3>
+			<form action="#">
+				<div>
+					<label for="firstName">First Name:</label>
+					<input type="text" id="firstName" />
+				</div>
+				<div>
+					<p>Are you over 21?</p>
+					<div>
+						<input
+							type="radio"
+							id="over21"
+							name="age"
+							value="yes" />
+						<label for="over21">Yes</label>
+					</div>
+					<div>
+						<input
+							type="radio"
+							id="notOver21"
+							name="age"
+							value="no" />
+						<label for="notOver21">No</label>
+					</div>
+				</div>
+				<div>
+					<label for="email">Email:</label>
+					<input type="email" id="email" required />
+				</div>
+				<div>
+					<label for="password">Password:</label>
+					<input type="password" id="password" required />
+				</div>
+				<div>
+					<label for="color">Pick a color:</label>
+					<input type="color" id="color" />
+				</div>
+				<div>
+					<img
+						src="https://source.unsplash.com/random/?flower"
+						alt="Beautiful flower(s)"
+						class="flowerImg" />
+				</div>
+				<button>Submit</button>
+			</form>
+		</div>
+	</body>
+</html>
