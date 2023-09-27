@@ -1,8 +1,8 @@
 # HTML Elements
 
-📂 htmlElements.html
+📂 htmlElements.html, htmlElements.css
 
-🔗 [HTML elements files on GitHub](https://github.com/Lasseignejk/DC-Notes/tree/main/HTML/HTML/HTMLElements)
+🔗 [HTML elements files on GitHub](https://github.com/Lasseignejk/DC-Notes/tree/main/HTML/HTMLElements)
 
 📓 [list of elements on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
 
