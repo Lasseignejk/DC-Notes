@@ -4,21 +4,21 @@
 
 🔗 [File on GitHub]()
 
-There are 3 routes we'll cover here -- `GET`, `POST`, and `DELETE`.
+There are 4 routes we'll cover here -- `GET`, `POST`, `PUT`, and `DELETE`. At the top of the `index.js` file, I've created a variable called `users` which has dummy data in it. We'll be updating this variable using the routes below, like it's a database.
 
 ## GET
 
-The simplest of routes, `GET` routes only get data and send that data to the frontend. That's it.
+The simplest of routes, `GET` routes only <strong>get</strong> data and send that data to the frontend. That's it.
 
-    app.get("/", (req,res) => {
-        res.send("This is the home page.")
-    })
+    app.get("/get_users", (req, res) => {
+        res.send(users);
+    });
 
 ## POST
 
 `POST` routes handle sending data back and forth from the frontend to the backend. That data can then be stored on the backend, used to check if something is correct (if a user-entered password matches the password saved in the database), or used to update information stored on the backend.
 
-## To send data to the server...
+### To send data to the server...
 
 To send data to the server with just Postman, first navigate to the `Body` tab in Postman. You should see options below -- none, form-data, etc. Click `raw` and a blue dropdown should appear at the end of the row. The default is `Text`, change it to `JSON`.
 
@@ -31,7 +31,7 @@ In the area below, we can type in a JSON object for the body of the request! We 
 
 We are entering the body in JSON so the keys of the object, `username` and `password`, need quotation marks around them too. Postman will show a little red squiggle if you forget the quotation marks.
 
-## Closer look at the `req` object
+### Closer look at the `req` object
 
 Now that we've got Postman setup, we need to write our route. Before we get to far though, let's take a closer look at the `req` part of `(req, res)`. Before now, we've only used `res` -- `res.send("Hello World!")`. When we send information to the server, like in a `post` route, that information is set in the `req`.
 
@@ -78,7 +78,7 @@ We just looked at the `req` object and we saw that the data we pass in the body 
 
 We can use dot notation to access the information contained within the body of a request! Let's say a user is logging in. Here's the <strong>first</strong> way you could write the `post` route:
 
-    app.post("/login", (req, res) => {
+    app.post("/login_1", (req, res) => {
         const username = req.body.username;
         const password = req.body.password;
         res.send(
@@ -90,7 +90,7 @@ Let's break it down. On the second and third lines, we declare the variables `us
 
 Typically, it's a good idea to have the variable on the backend be the same as the key in the body -- `const username` and `{"username": ""}` for example. If they happen to be different, you have to write the route like we did above. The important thing is that the `req.body` part has to match what the data looks like, where we entered it in Postman.
 
-    app.post("/login", (req, res) => {
+    app.post("/login_1", (req, res) => {
         const user = req.body.username;
         const pass = req.body.password;
         res.send(
@@ -100,11 +100,55 @@ Typically, it's a good idea to have the variable on the backend be the same as t
 
 If the variable and the data match, though, like in the original example, there's a shortcut we can use. Let's say we're going to create a new user. Compare the route below to the route above:
 
-    app.post("/create_user", (req, res) => {
+    app.post("/login_2", (req, res) => {
         const { username, password } = req.body;
         res.send(
-            `Created new user: Username -- ${username}, Password -- ${password}`
+            `Logging in user with these credentials: Username -- ${username}, Password -- ${password}`
         );
     });
 
-Did you spot the difference? Instead of writing out `const username = req.body.username` and doing the same for password, we've condensed it into one line -- `const {username, password} = req.body`. This does the same thing as the first way we learned, it just saves us some keystrokes!
+Did you spot the difference? Instead of writing out `const username = req.body.username` and doing the same for password, we've condensed it into one line -- `const {username, password} = req.body`. This does the same thing as the first way we learned, it just saves us some keystrokes! It's very handy when there's lots of information you need to send to the backend. We only have two things we're sending in this example, but maybe you're sending `form` data and the form has 20 fields! Instead of having to write out every variable, we can `destructure` the data using the `{ }` and save some time. Both ways work -- use whichever is more comfortable!
+
+### Creating a new user using `POST`
+
+Let's use what we know about `post` and `req.body` to add a new user to the `users` array!
+
+    // Postman
+    {
+        "username": "FirstUser",
+        "password": "1234password"
+    }
+
+    app.post("/create_user", (req, res) => {
+        const id = users.length + 1;
+        users.push({ id, ...req.body });
+        res.send(users);
+    });
+
+When you hit the route, you should see a new user added to the end of the array! If you're wondering about the second line in the route, `users.push({id, ...req.body})`, we're using the `spread operator` to edit the `req.body` slightly. It's taking whatever is already in the `req.body` and adding the `id` field inside of that object. Just using the variable `id` in the spread is enough -- Javascript looks at that and will create a key of 'id' and set the value equal to the value of the 'id' variable. It's a shorthand way of writing `id: id`.
+
+## PUT
+
+`put` requests update data in the database. We can use `post` for this as well, but `post` can have unintended consequences if we're not careful. Here's a route that lets the user update their password.
+
+    app.put("/update_user", (req, res) => {
+        const { username, password } = req.body;
+        const userIndex = users.findIndex((user) => user.username === username);
+        users[userIndex].password = password;
+        res.send(
+            `Updated ${username}'s password to "${users[userIndex].password}"`
+        );
+    });
+
+This route takes in a username and password. Then it finds the index of the user it's going to update by comparing the usernames of everyone in the `users` array against the username passed in the `req.body`. Finally, it updates the password and sends back a success.
+
+## DELETE
+
+Let's use a `delete` route to delete a user from the array. We could do this by searching for the index of a certain user, like we did in the `put` example above, but a more efficient way would be to use the Javascript `filter` method.
+
+    app.delete("/delete_user", (req, res) => {
+        const {username} = req.body
+        const filteredUsers = users.filter((user) => user.username !== username);
+        users = filteredUsers
+        res.send(users)
+    })
