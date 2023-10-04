@@ -1,4 +1,8 @@
-# how to set up a node server
+# How to set up a Node Server
+
+📂 index.js
+
+🔗 [File on GitHub]()
 
 ## Step 1
 
@@ -14,7 +18,7 @@
 
 2. `npm install express` or `npm i express`
 
--   This creates a whole buncha stuff, including `node_modules`.
+-   This creates a whole bunch of stuff, including `node_modules`.
 
 -   DO NOT NOT NOT NOT NOT NOT PUSH YOUR NODE_MODULES UP TO GITHUB you will get a WARNING from github telling you to not do it again. If you keep doing it, they will DELETE YOUR REPOSITORY
 
@@ -64,7 +68,7 @@ app.listen(PORT, console.log(`Listening on port ${PORT}`));
 
 -   A route is a path for your server to do a specified action. Generally a route has a HTTP Method that is required to access it (`get`, `post`, `put`, `delete`, etc).
 
--   This is a basic route:
+-   This is a basic route -- make sure you put all of your routes ABOVE the `app.listen` line. The `app.listen` should be at the very bottom.
 
 ```
 app.get("/home", (req, res) => {
@@ -72,7 +76,7 @@ app.get("/home", (req, res) => {
 });
 ```
 
--   If you go to `localhost:3000/home`, you should see "Hello World!" printed on the screen. We use `localhost` because the server is currently running on our computer. If the server was hosted somewhere else, we'd have to change localhost to whatever the address was. We use `3000` because that's the port number we defined above. We use `/home` because that's the endpoint we defined in the route. We can change that to be whatever we want, then we'd have to change the url to match.
+-   If you type in `localhost:3000/home` as the URL on the browser, you should see "Hello World!" printed on the screen (MAKE SURE the server is running!). We use `localhost` because the server is currently running on our local computer. If the server was hosted somewhere else, we'd have to change localhost to whatever the address was. We use `3000` because that's the port number we defined above. We use `/home` because that's the endpoint we defined in the route. We can change that to be whatever we want, then we'd have to change the URL to match.
 
 -   `req` is short for `request` and `res` is short for `response`. You can technically call these whatever you want, but the practice is to use either req/res or request/response. THE ORDER MATTERS. Make sure it's always `req`, THEN `res`.
 
@@ -81,15 +85,3 @@ app.get("/home", (req, res) => {
 -   Each route can have only ONE response. If you have more than one you'll get an error. You can also chain onto the response -- `res.status(401).send("Nope")`
 
 -   Don't use spaces or - in route names, use \_ instead.
-
-## To send data to the server...
-
-`app.use(express.json())`
-
-postman --> body --> raw --> JSON
-
-## Parts of backend
-
-Backend has two parts -- the server and the database.
-
-Server receives a request, goes to the database, finds the data, and serves it to the client.

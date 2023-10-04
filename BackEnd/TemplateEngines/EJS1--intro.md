@@ -1,12 +1,12 @@
 [Embedded Javascript](https://ejs.co/)
 
-# Installation 
+# Installation
 
-    npm i express ejs 
+    npm i express ejs
 
 # How to use EJS
 
-We can use ejs in our routes like this: 
+We can use ejs in our routes like this:
 
     router.get("/user_data", (req,res) => {
         let student = {name: "Dustin"};
@@ -18,16 +18,16 @@ We can use ejs in our routes like this:
 
 But that's painful. Let's do it a little differently.
 
-in the main index.js: 
+in the main index.js:
 
     app.set("views", "./views")
     app.set("view engine", "ejs");
 
-Make a new folder named `views` in the root directory. 
+Make a new folder named `views` in the root directory.
 
-Inside that folder, make a folder named `user` and inside there, a file named `user.ejs`
+Inside that folder, make a folder named `user` and inside of there, a file named `user.ejs`
 
-Inside user.ejs: 
+Inside user.ejs:
 
     <!DOCTYPE html>
     <html>
@@ -45,7 +45,7 @@ Inside user.ejs:
 
     </html>
 
-And our route looks like this now: 
+And our route looks like this now:
 
     router.get("/user_data", (req, res) => {
         res.render("./user/user.ejs", {
