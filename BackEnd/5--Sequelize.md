@@ -3,7 +3,8 @@
 [npm sequelize documentation](https://www.npmjs.com/package/sequelize-cli#documentation)
 
 # Sequelize
-Sequelize is an ORM tool -- Object-Relational Mapping 
+
+Sequelize is an ORM tool -- Object-Relational Mapping
 
 Worst-case scenario, if you mess up the sequelize, drop the table and try it again. It is much harder to do when there is data already in the table, so leave that for last once you have everything already set up.
 
@@ -27,10 +28,10 @@ To display all the sequelize commands:
 
 There are 3 things here, development, test, and production. FOR ALL THREE
 
-- change the username to "postgres"
-- change password to the password you set up for postgres
-- change host to "localhost"
-- change dialect to "postgres" because that's the flavor of sql we're using
+-   change the username to "postgres"
+-   change password to the password you set up for postgres
+-   change host to "localhost"
+-   change dialect to "postgres" because that's the flavor of sql we're using
 
 <br>
 <br>
@@ -81,7 +82,7 @@ We can also do onUpdate: "CASCADE" so if the userId updates, it'll update there 
 
 ### The migration file
 
-The code in the migration file is what actually makes the table. The model is just the table in JS form. 
+The code in the migration file is what actually makes the table. The model is just the table in JS form.
 
 On the migration file, you can set things like allowNull: true/false, primaryKey: true/false, etc.
 
@@ -137,22 +138,22 @@ So for each owner, we've assigned them a value at 'pet', the foreign key, which 
 
     await queryInterface.bulkInsert('Owners',[
         {
-            firstName: "Lon",
-            lastName: "Lasseigne",
+            firstName: "Bob",
+            lastName: "Smith",
             pet: 1,
             createdAt: new Date(),
             updatedAt: new Date()
         },
         {
             firstName: "Jaye",
-            lastName: "Lasseigne",
+            lastName: "Smith",
             pet: 2,
             createdAt: new Date(),
             updatedAt: new Date()
         },
         {
-            firstName: "Hunter",
-            lastName: "Rasmussen",
+            firstName: "Daisy",
+            lastName: "Smith",
             pet: 3,
             createdAt: new Date(),
             updatedAt: new Date()

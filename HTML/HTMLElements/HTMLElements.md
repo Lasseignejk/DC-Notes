@@ -59,7 +59,7 @@ See how the `type="text"` goes in the tag itself, between `<input` and the `/>` 
 
     <input type="checkbox" />
 
-Inupts have other attributes, like `required`, `name`, and `id` -- I won't get into those here. If you're curious, check out [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input)!
+Inputs have other attributes, like `required`, `name`, and `id` -- I won't get into those here. If you're curious, check out [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input)!
 
 Elements like `<h1>` and `<div>` also have attributes, but the only attributes we usually give it are the `class` or `id` attributes, so we can target it in CSS or JavaScript.
 

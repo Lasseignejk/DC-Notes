@@ -53,4 +53,4 @@ Notice how this time, we don't have the parenthesis for the parameters on the fu
 
 This is also ok:
 `button.addEventListener("click", nameOfFunction)`
-this will wait until we click the button. But if we want to pass our funciton something, we need to use the anonymous function
+this will wait until we click the button. But if we want to pass our function something, we need to use the anonymous function

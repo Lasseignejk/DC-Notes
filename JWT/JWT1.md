@@ -48,4 +48,4 @@ id,
 
 So anywhere on the frontend, we can check the token and pull data out of it.
 
-Pass this token everytime we make a new fetch. Send the token too, check it on the backend. If it's valid for the information they're trying to access, send them. Let them go. If not, redirect to login or say they don't have authorization to view that page.
+Pass this token every time we make a new fetch. Send the token too, check it on the backend. If it's valid for the information they're trying to access, send them. Let them go. If not, redirect to login or say they don't have authorization to view that page.

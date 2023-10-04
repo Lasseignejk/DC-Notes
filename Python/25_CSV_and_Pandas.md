@@ -1,18 +1,18 @@
 # CSV files and Pandas
 
-CSV stands for 'Comma Separated Values' and is a common way to export data in tables, like Excel or Google Sheets. 
+CSV stands for 'Comma Separated Values' and is a common way to export data in tables, like Excel or Google Sheets.
 
-Open up a CSV file and use `readlines()` to create a list named `data` that contains all the values from the csv file. 
+Open up a CSV file and use `readlines()` to create a list named `data` that contains all the values from the csv file.
 
-    with open("weather_data.csv) as file: 
+    with open("weather_data.csv) as file:
       data = file.readlines()
       print(data)
 
-The data printed looks like this: 
+The data printed looks like this:
 
     ['day,temp,condition\n','Monday,12,Sunny\n','Tuesday,14,Rain\n'...]
 
-It would be pretty painful to try and use the data as it is now -- they're all in strings, they still have commas, etc. 
+It would be pretty painful to try and use the data as it is now -- they're all in strings, they still have commas, etc.
 
 So instead, we can `import csv`
 
@@ -21,24 +21,24 @@ So instead, we can `import csv`
       data = csv.reader(data_file)
       print(data)
 
-`data` is a csv.reader object. If we want to actually see the object, we'll have to loop through it. 
+`data` is a csv.reader object. If we want to actually see the object, we'll have to loop through it.
 
     import csv
-    with open("weather_data.csv") as data_file: 
+    with open("weather_data.csv") as data_file:
       data = csv.reader(data_file)
-      for row in data: 
+      for row in data:
         print(row)
 
-Now, it looks like this: 
+Now, it looks like this:
 
     ['day', 'temp', 'condition']
     ['Monday', '12', 'Sunny']
     ['Tuesday', '14', 'Rain']
     [.....]
 
-Each row has been split into invididual arrays, with each value in its own string.
+Each row has been split into individual arrays, with each value in its own string.
 
-If you want to just view the temperatures: 
+If you want to just view the temperatures:
 
     import csv
     with open("weather_data.csv") as data_file:
@@ -59,8 +59,8 @@ But that's STILL a lot of work to just get one column of data. Enter the `pandas
     data = pandas.read_csv("weather_data.csv")
     print(data)
 
-The data prints like this: 
-| | day | temp | condition | 
+The data prints like this:
+| | day | temp | condition |
 | --- | --- | --- | ---|
 | 0 | Monday | 12 | Sunny |
 | 1 | Tuesday | 14 | Rain |
@@ -68,30 +68,31 @@ The data prints like this:
 
 BAM! That easy! If we want to get data from a specific column, all we have to do is data["nameOfColumn"]
 
-So `print(data["temp"])` gives us this: 
+So `print(data["temp"])` gives us this:
 
-| 0 | 12 | 
-| 1 | 14 | 
+| 0 | 12 |
+| 1 | 14 |
 | 2 | 15 |
 
 To get a specific value, you use `print(data["temp"][0])`
 
 # Working with Rows and Columns
-In Pandas, there are two main types used -- Series and DataFrame. 
 
-A DataFrame is basically like the table itself, allll the data you see in an excel sheet or something. 
+In Pandas, there are two main types used -- Series and DataFrame.
 
-An individual column/row/entry is known as a 'Series'. Basically a list. 
+A DataFrame is basically like the table itself, allll the data you see in an excel sheet or something.
 
-You can convert DataFrames to lots of stuff. Let's convert our data to a dictionary. 
+An individual column/row/entry is known as a 'Series'. Basically a list.
+
+You can convert DataFrames to lots of stuff. Let's convert our data to a dictionary.
 
     data_dict = data.to_dict()
     print(data_dict)
 
-This will take each column and make it a dictionary. 
+This will take each column and make it a dictionary.
 
     {
-      'day': {0: 'Monday', 1: 'Tuesday', 2: 'Wednesday'}, 'temp': {0: 12, 1: 14, 2: 15}, 
+      'day': {0: 'Monday', 1: 'Tuesday', 2: 'Wednesday'}, 'temp': {0: 12, 1: 14, 2: 15},
       'condition': {0: 'Sunny', 1: 'Rain', 2: 'Rain'}
     }
 
@@ -105,25 +106,26 @@ Series can also be converted. Let's take our temp data from earlier and make it 
 So. To get data by column: `data["column_name"]` or `data.column_name`
 
 ## Data by row
+
 Select the entire table (data), then in square brackets give it a condition to check for. For example, if we want to look at the data for 'Monday', we can write this: `data[data.day == "Monday"]`
 
 Inside the data, look under the 'day' column for a row called 'Monday'.
 
-It should look like this if you print it: 
+It should look like this if you print it:
 
-| | day | temp | condition | 
-| --- | --- | --- | ---|
-| 0 | Monday | 12 | Sunny |
+|     | day    | temp | condition |
+| --- | ------ | ---- | --------- |
+| 0   | Monday | 12   | Sunny     |
 
-Knowing this, how would we find the row where the temperature is highest? 
+Knowing this, how would we find the row where the temperature is highest?
 
 `print(data[data.temp === data.temp.max()])`
 
-| | day | temp | condition | 
-| --- | --- | --- | ---|
-| 6 | Sunday | 24 | Sunny |
+|     | day    | temp | condition |
+| --- | ------ | ---- | --------- |
+| 6   | Sunday | 24   | Sunny     |
 
-Inside data, look under the temp column for a row where the temp was the highest. 
+Inside data, look under the temp column for a row where the temp was the highest.
 
 So to get data by column: `data["name_of_column"]`
 
@@ -136,6 +138,7 @@ If we save a row's data to a variable, we can tap into each value.
     print(monday.temp) // 12
 
 # Creating a DataFrame from scratch
+
 We've got some data...
 
     data_dict = {
@@ -143,37 +146,38 @@ We've got some data...
       "scores": [76, 56, 65]
     }
 
-How do we make it a DataFrame? 
+How do we make it a DataFrame?
 
-Remember a DataFrame is a TABLE, like Google Sheets or a CSV file. 
+Remember a DataFrame is a TABLE, like Google Sheets or a CSV file.
 
     data = pandas.DataFrame(data_dict)
     print(data)
 
-| | students | score | 
-| --- | --- | --- | 
-| 0 | Amy |76 | 
-| 1 | James | 56 |
-| 2 | Angela | 65 |
+|     | students | score |
+| --- | -------- | ----- |
+| 0   | Amy      | 76    |
+| 1   | James    | 56    |
+| 2   | Angela   | 65    |
 
-To convert that DataFrame TO A CSV FILE, we can do this: 
+To convert that DataFrame TO A CSV FILE, we can do this:
 
     data.to_csv("new_data.csv")
 
-When you run the code, it'll make a new csv file. 
+When you run the code, it'll make a new csv file.
 
-## From beginning to end 
+## From beginning to end
+
 1. Import `pandas`
 2. Open up the csv file in python and save it to a variable.
 
     data = pandas.read_csv("file_path.csv")
 
-3. Manipulate the data 
+3. Manipulate the data
 4. Create a dictionary of the data
 
     data_dict = {
-      "column_name_1": ["value1", "value2", "value3"],
-      "column_name_2": ["value1", "value2", "value3"]
+    "column_name_1": ["value1", "value2", "value3"],
+    "column_name_2": ["value1", "value2", "value3"]
     }
 
 5. Convert the dictionary to a DataFrame

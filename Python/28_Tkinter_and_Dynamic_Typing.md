@@ -19,7 +19,7 @@ We can use `.create_text()` to add text.
 
 # .after()
 
-Tkinter method you call on the window. You just pass it a number in miliseconds and a function that will run after a delay.
+Tkinter method you call on the window. You just pass it a number in milliseconds and a function that will run after a delay.
 
     def say_something(thing):
     print(thing)

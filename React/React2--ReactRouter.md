@@ -180,7 +180,7 @@ The \* path means it'll render if it doesn't match any of the above routes.
 
 For example, /account/settings
 
-Inside the Account foler, make a new file called AccountSettings.jsx
+Inside the Account folder, make a new file called AccountSettings.jsx
 
     import React from "react";
 

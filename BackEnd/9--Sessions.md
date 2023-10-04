@@ -61,19 +61,19 @@ Migrate
 
 What is a cookie?
 
-- A cookie is a small piece of data stored in the user's browser memory.
-- Cookies are set by the server, and are included in all future requests to that server.
-- I am giving something to authenticate you, so that next time you have a request, I can look at that cookie and give you your information.
-- Cookies don't usually contain super detailed information, just stuff like user preferences (dark themes) and if you agreed to the privacy agreements.
-- Cookies are forever
+-   A cookie is a small piece of data stored in the user's browser memory.
+-   Cookies are set by the server, and are included in all future requests to that server.
+-   I am giving something to authenticate you, so that next time you have a request, I can look at that cookie and give you your information.
+-   Cookies don't usually contain super detailed information, just stuff like user preferences (dark themes) and if you agreed to the privacy agreements.
+-   Cookies are forever
 
 What is a session?
 
-- Not stored on the browser, it lives on the server.
-- Typically store login information
-- Browser requests access to infromation using a username and password.
-- server responds, sending back a cookie along with the response.
-- The client sends a request to access a protected area, the server checks the cookie. Is this cookie stale? Is it good?
+-   Not stored on the browser, it lives on the server.
+-   Typically store login information
+-   Browser requests access to information using a username and password.
+-   server responds, sending back a cookie along with the response.
+-   The client sends a request to access a protected area, the server checks the cookie. Is this cookie stale? Is it good?
 
 ## Making a session
 
@@ -94,11 +94,11 @@ Require both of these packages in your main app.js file and then pass both packa
         })
     );
 
-- secret: used to sign the cookie. Your company will decide what the secret is.
-- resave: update the session even if we've done no changes. So like a timeout. If resave is true, it will timeout like a bank website.
-- saveUni: start a new session. don't try to restart an old session.
-- cookie: secure: false this is because we are on localhost. localhost does not have https.
-- cookie: maxAge: how long the cookie is good for, in miliseconds.
+-   secret: used to sign the cookie. Your company will decide what the secret is.
+-   resave: update the session even if we've done no changes. So like a timeout. If resave is true, it will timeout like a bank website.
+-   saveUni: start a new session. don't try to restart an old session.
+-   cookie: secure: false this is because we are on localhost. localhost does not have https.
+-   cookie: maxAge: how long the cookie is good for, in milliseconds.
 
 ## Set some session data
 
@@ -134,7 +134,7 @@ Everything we've done so far is to get access to the input fields.
 
 Now that your session is configured, you can store some data on it.
 
-You can do this isndie any route handler or middleware using the req.session object.
+You can do this inside any route handler or middleware using the req.session object.
 
 Require your model at the top of your index.js
 
@@ -181,7 +181,7 @@ Then, update your route:
 
 next() is a built-in function in middleware.
 
-Now, if you just type in localhost:3020/account without being logged in, it'll redirect to the login page. if you console.log(req.sesson), there IS NOT a user in the session, meaning this browser hasn't been authenticated/logged in yet.
+Now, if you just type in localhost:3020/account without being logged in, it'll redirect to the login page. if you console.log(req.session), there IS NOT a user in the session, meaning this browser hasn't been authenticated/logged in yet.
 
 So what happens when you logout? it should empty the session or set it to null.
 
@@ -250,7 +250,7 @@ If you use supabase, you don't need anything to do with sequelize.
 
 **Sign up for an account with Supabase.**
 
-Things like Supabase are not widespread yet though, so probs won't use it at your job.
+Things like Supabase are not widespread yet though, so you probably won't use it at your job.
 
 Supabase is another thing to use to see our tables and stuff. We can edit our columns, add in rows, etc.
 

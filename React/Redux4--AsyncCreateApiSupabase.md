@@ -3,7 +3,8 @@
 📓 [Helpful Stack Overflow Post](https://stackoverflow.com/questions/70700188/how-to-use-redux-rtk-query-with-supabase)
 
 # Using RTK createApi with Supabase
-In `Redux3`, we learned that one of the things createApi needs to work is a `baseQuery`, the part of the url that doesn't change when you do an API call. But what if our fetch is to a database? 
+
+In `Redux3`, we learned that one of the things createApi needs to work is a `baseQuery`, the part of the url that doesn't change when you do an API call. But what if our fetch is to a database?
 
 Enter `fakeBaseQuery()`. This comes from RTK and takes the place of our baseQuery.
 
@@ -16,7 +17,7 @@ Enter `fakeBaseQuery()`. This comes from RTK and takes the place of our baseQuer
         ...
     })
 
-Then, you put your supabase call inside of an endpoint 
+Then, you put your supabase call inside of an endpoint
 
     endpoints: (builder) ({
         allData: builder.query({
@@ -31,14 +32,14 @@ Then, you put your supabase call inside of an endpoint
         })
     })
 
-And you export it like normal 
+And you export it like normal
 
     export const {useAllDataQuery, useLazyAllDataQuery} = fetchEsports;
     export default fetchEsports;
 
-You can use these functions in your componenets like we did in `Redux3`. 
+You can use these functions in your components like we did in `Redux3`.
 
-You can also add more endpoints to get different data from the database, like this: 
+You can also add more endpoints to get different data from the database, like this:
 
     endpoints: (builder) ({
         allData: builder.query({...}),

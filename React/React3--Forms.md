@@ -44,15 +44,15 @@ import useState at the top, then add:
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-So we need to track the state everytime the input field changes, everytime the user types something. TO practice, put this on one of your inputs
+So we need to track the state every time the input field changes, every time the user types something. TO practice, put this on one of your inputs
 
     onChange={() => console.log("joe is typing")}
 
-Everytime you put something in that input, it should console log that. Level up:
+Every time you put something in that input, it should console log that. Level up:
 
     onChange={(e) => console.log(e.target.value)}
 
-That will console log everytime you put something new.
+That will console log every time you put something new.
 
     j
     jo
@@ -70,7 +70,7 @@ Now look at the code. There is no difference between our three state variables, 
 
 ## Make it more generic
 
-ALWAYS EXPECT your form will need to be scaleable. You don't know if at some point more input fields will need to be added to your form.
+ALWAYS EXPECT your form will need to be scalable. You don't know if at some point more input fields will need to be added to your form.
 
 Make a new state variable, signUpForm:
 
@@ -137,30 +137,31 @@ Toast makes nice little popup alerts so we don't need to use the window alerts
 ## Setting up the backend
 
 ## UseEffect
-We use useEffect to run something immediately on page load. It ensures you get data back and you can use the data. When the component is mounted, it runs this function immediately. 
+
+We use useEffect to run something immediately on page load. It ensures you get data back and you can use the data. When the component is mounted, it runs this function immediately.
 
     useEffect(() => {
           const fetchDitto = async () => {
-				const getDitto = await fetch(
-					"https://pokeapi.co/api/v2/pokemon/ditto"
-				);
-				const jsonDitto = await getDitto.json();
-				setDitto(jsonDitto);
-			};
+    			const getDitto = await fetch(
+    				"https://pokeapi.co/api/v2/pokemon/ditto"
+    			);
+    			const jsonDitto = await getDitto.json();
+    			setDitto(jsonDitto);
+    		};
       fetchDitto();
     },[])
 
-DO NOT SET STATE INSIDE OF A USE EFFECT -- if you do, you'll trigger an infinite rerender. Doing it inside of a function like we have it is ok, but putting 'setDitto' underneath the 'fetchDito' on line 20 will cause an infinite rerender.
+DO NOT SET STATE INSIDE OF A USE EFFECT -- if you do, you'll trigger an infinite rerender. Doing it inside of a function like we have it is ok, but putting 'setDitto' underneath the 'fetchDitto' on line 20 will cause an infinite rerender.
 
     // DON'T RUN THIS
     useEffect(() => {
         const fetchDitto = async () => {
-				const getDitto = await fetch(
-					"https://pokeapi.co/api/v2/pokemon/ditto"
-				);
-				const jsonDitto = await getDitto.json();
-				setDitto(jsonDitto);
-			};
+    			const getDitto = await fetch(
+    				"https://pokeapi.co/api/v2/pokemon/ditto"
+    			);
+    			const jsonDitto = await getDitto.json();
+    			setDitto(jsonDitto);
+    		};
       fetchDitto();
       setDitto(jsonDitto);
     })

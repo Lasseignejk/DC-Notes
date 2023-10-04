@@ -1,5 +1,6 @@
 # Routing System
-All you need to create a route is to add a folder inside the app folder, with the name of the route. 
+
+All you need to create a route is to add a folder inside the app folder, with the name of the route.
 
     /app
         /user
@@ -8,7 +9,8 @@ All you need to create a route is to add a folder inside the app folder, with th
 Inside `page.js`, you can write your react component like normal and you can view it at `localhost:3000/user`
 
 ## Nested Routes
-Without Next.js, nested routing looks something like this: 
+
+Without Next.js, nested routing looks something like this:
 
     const App = () => {
         return (
@@ -26,7 +28,7 @@ Without Next.js, nested routing looks something like this:
         )
     }
 
-With Next.js, all we have to do is nest the folders. 
+With Next.js, all we have to do is nest the folders.
 
     /app
         /posts
@@ -35,9 +37,10 @@ With Next.js, all we have to do is nest the folders.
                 page.js
 
 ## Dynamic Routes
+
 /posts/:postId (see nested route for an example of a dynamic route in normal react)
 
-With Next.js, we add square brackets around the folder name. 
+With Next.js, we add square brackets around the folder name.
 
     /app
         /posts
@@ -48,7 +51,8 @@ With Next.js, we add square brackets around the folder name.
                 page.js
 
 ## Layout.js in Route Folders
-In any of the route folders, you can have a layout.js file to share componenets between those routes. Components that are only shown on those specific route pages. 
+
+In any of the route folders, you can have a layout.js file to share components between those routes. Components that are only shown on those specific route pages.
 
     /app
         /posts
@@ -59,8 +63,9 @@ In any of the route folders, you can have a layout.js file to share componenets 
             /[postId]
                 page.js
 
-## Loading.js 
-In any of the subfolders, you can add a loading.js file which will hold spinners/ skeletons to load when the page is loading. 
+## Loading.js
+
+In any of the subfolders, you can add a loading.js file which will hold spinners/ skeletons to load when the page is loading.
 
     /app
         /posts
@@ -73,6 +78,7 @@ In any of the subfolders, you can add a loading.js file which will hold spinners
                 page.js
 
 ## Error.js
-Similar to loading.js, the error.js file will appear if there is an error. 
 
-Error components must be Client components, so don't forget to declare that at the top of the page. 
+Similar to loading.js, the error.js file will appear if there is an error.
+
+Error components must be Client components, so don't forget to declare that at the top of the page.

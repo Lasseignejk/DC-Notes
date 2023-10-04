@@ -10,65 +10,74 @@ Two trains of thought: Redux and React Context.
 
 They do the same thing -- global state.
 
-We need that global state because it gives us a <strong>single source of truth</strong>. If we update the frontend, we update the backend. If we update the backend, we update the frontend. 
+We need that global state because it gives us a <strong>single source of truth</strong>. If we update the frontend, we update the backend. If we update the backend, we update the frontend.
 
-## What is a pure function? 
-- Given the same input, it will always return the same output. 
-- Produces no side effects
-- It relies on no external mutable state
+## What is a pure function?
 
-    function sqaure(x) {
-        return x*x
-    }
-
-## What is an impure function? 
-- Output can be influenced by external forces
-- Has side effects
+-   Given the same input, it will always return the same output.
+-   Produces no side effects
+-   It relies on no external mutable state
 
     function square(x) {
-        update x in Database(x);
-        return x * x
+    return x\*x
+    }
+
+## What is an impure function?
+
+-   Output can be influenced by external forces
+-   Has side effects
+
+    function square(x) {
+    update x in Database(x);
+    return x \* x
     }
 
     function squareAll(items) {
-        for (let i = 0; i < items.length; i++>) {
-            items[i] = square(items[i])
-        }
+    for (let i = 0; i < items.length; i++>) {
+    items[i] = square(items[i])
     }
-- Basically, your functions should do WHAT YOU NAME THEM TO DO. And only let them do ONE thing. Don't have multiple things happening in one function, break it down into smaller bits. 
+    }
+
+-   Basically, your functions should do WHAT YOU NAME THEM TO DO. And only let them do ONE thing. Don't have multiple things happening in one function, break it down into smaller bits.
 
 ## Avoiding Mutations
+
 There are two key points for avoiding mutations
-- Using `concat()`, `slice()`, and `[...spread]` for Arrays
-- Using `Object.assign()` and something else for Objects
+
+-   Using `concat()`, `slice()`, and `[...spread]` for Arrays
+-   Using `Object.assign()` and something else for Objects
 
 ## Parts of Redux
-- The Store -- The state of your whole application is stored in an object tree within a single store.
-- Actions -- The only way to change the state is to emit an action, an object describing what happened. 
-    - State is immutable, it cannot change in place.
-- Reducers -- To specify how the state tree is transformed by actions, you write pure reducers. 
+
+-   The Store -- The state of your whole application is stored in an object tree within a single store.
+-   Actions -- The only way to change the state is to emit an action, an object describing what happened.
+    -   State is immutable, it cannot change in place.
+-   Reducers -- To specify how the state tree is transformed by actions, you write pure reducers.
 
 ### 1. The Store
-- State of the entire application lives in the store
-- A store holds the whole state tree of your application. The only way to change the state inside it is to dispatch an action on it.
-- A store is not a class. It's just an object with a few methods on it. To create it, pass your root reducing function to createStore
 
-- Let's use Amazon as an example. There's a warehouse(store) with employees(reducers) and shelves of products(state). An order comes in to the warehouse for a kleenex box. A call goes out -- 'Who's job is to get a kleenex box?' ONE employee raises his hand -- 'I do that!' So that employee goes to the shelves and gets the box for the customer. That employee's ONLY JOB is to get kleenex. They don't get anything else, they don't control anything else, they don't affect anything else. 
+-   State of the entire application lives in the store
+-   A store holds the whole state tree of your application. The only way to change the state inside it is to dispatch an action on it.
+-   A store is not a class. It's just an object with a few methods on it. To create it, pass your root reducing function to createStore
+
+-   Let's use Amazon as an example. There's a warehouse(store) with employees(reducers) and shelves of products(state). An order comes in to the warehouse for a kleenex box. A call goes out -- 'Who's job is to get a kleenex box?' ONE employee raises his hand -- 'I do that!' So that employee goes to the shelves and gets the box for the customer. That employee's ONLY JOB is to get kleenex. They don't get anything else, they don't control anything else, they don't affect anything else.
 
 ### 2. Actions
-- The only way to change the state is to emit an action, an object describing what happened. 
-- Nothing more than JS objects
-- Every action needs a type property for describing how the state should change
-- Need a payload
-- Best practice to wrap every action within a function, called action creator. 
+
+-   The only way to change the state is to emit an action, an object describing what happened.
+-   Nothing more than JS objects
+-   Every action needs a type property for describing how the state should change
+-   Need a payload
+-   Best practice to wrap every action within a function, called action creator.
 
 ### 3. Reducers
-- To specify how the state tree is transformed by actions, you write pure reducers*.
-- Just a plain JS function with two parameters
-    - "In essence, a reducer is a function which takes two arguments -- the current state and an action -- and returns based on both arguments a new state"
-- Reducer knows how to produce the next state because of actions 
-- When the store needs to know how an action changes the state, it asks the reducers.
-- `rootReducer` combines all of the reducers
+
+-   To specify how the state tree is transformed by actions, you write pure reducers\*.
+-   Just a plain JS function with two parameters
+    -   "In essence, a reducer is a function which takes two arguments -- the current state and an action -- and returns based on both arguments a new state"
+-   Reducer knows how to produce the next state because of actions
+-   When the store needs to know how an action changes the state, it asks the reducers.
+-   `rootReducer` combines all of the reducers
 
 ## Install Redux
 
@@ -220,8 +229,8 @@ So the 2 passed in the userSettings goes to that function on counterSlice, goes 
 <br>
 You can still use the useState hook along with redux, but the important pieces of info should be in redux.
 
+## Changing arrays in state
 
-## Changing arrays in state 
 We want to click two buttons. One will add a student to the array, the other will remove the last student from the array. To do this, we need to make sure that we don't mutate our state. Use the `spread operator` and `slice` to properly update state.
 
 `studentsSlice.js`

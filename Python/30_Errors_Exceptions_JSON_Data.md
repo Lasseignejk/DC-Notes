@@ -118,7 +118,7 @@ Last, let's add a `finally` block.
         file.close()
         print("File was closed.")
 
-`inally` blocks aren't used too often, but can be handy when you want to run code no matter what happens to clean up.
+`finally` blocks aren't used too often, but can be handy when you want to run code no matter what happens to clean up.
 
 ## Raising Exceptions
 

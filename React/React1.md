@@ -43,7 +43,7 @@ this is the point of inception of your react app. this file is the start of all 
 
 Walmart uses React. Remember, React reloads only areas of a website that gets updated. Updates only the things that are updated on the DOM. It reacts to the changes you make
 
-React has re-usable components. Kinda like partials in EJS. Another strength of react. you can re-use those over and over and over again, as long as you make them **generic.** Don't hard code! It should only take in data and render it. Don't hard code your data.
+React has re-usable components. Kinda like partials in EJS. Another strength of react. you can re-use those over and over and over again, as long as you make them **generic**. Don't hard code! It should only take in data and render it. Don't hard code your data.
 
 In react, you build components on components on components on components. Make everything a small component.
 
@@ -51,15 +51,15 @@ So on the main.jsx file, the <app> is what renders everything on the page.
 
 ## index.css
 
-react comes with css pre-written. you can of course delete it all
+React comes with css pre-written. you can of course delete it all
 
 ## App.jsx
 
-all componnets should have the first letter capitalized on the file name and the function names should be capitalized. Pascal casing
+All components should have the first letter capitalized on the file name and the function names should be capitalized. Pascal casing
 
-## adding css
+## Adding CSS
 
-To add css to a react page, write at the top of the jsx file:
+To add CSS to a react page, write at the top of the jsx file:
 
     import './App.css'
 
@@ -71,7 +71,7 @@ All of your errors will be in the console in your BROWSER.
 
 ## Download React Developer Tools for your browser
 
-This will help us debug our code. Right click inspect, there're now 2 new sections with the react symbol. if you click on it it'll show the react code.
+This will help us debug our code. Right click inspect, there're now 2 new sections with the react symbol. If you click on it it'll show the react code.
 
 # to make an app from scratch
 
@@ -118,7 +118,7 @@ Every React component can only return ONE element. that element can have many th
 
     Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (8:2)
 
-The p tage is outside the div, so it is trying to return TWO things. put the p tag in the div and the error will go away.
+The `p tag` is outside the div, so it is trying to return TWO things. put the p tag in the div and the error will go away.
 
     function App() {
         return (
@@ -144,7 +144,7 @@ All HTML elements come with the border margin padding. If you don't want all tha
 
 ## Making your own components
 
-make a folder in src called ocmponents. inside that folder, make more folders for each section. like account, ddashboard, header, footer
+make a folder in src called components. inside that folder, make more folders for each section. like account, dashboard, header, footer
 
 inside header.jsx, type rf and it should complete to react component
 
@@ -154,7 +154,7 @@ inside header.jsx, type rf and it should complete to react component
         }
     }
 
-rfc and rafc
+### ` rfc` and `rafce`
 
 [snippets](https://github.com/ults-io/vscode-react-javascript-snippets/blob/HEAD/docs/Snippets.md)
 
@@ -162,7 +162,7 @@ rfc and rafc
 
     You can search through snippets with ES7 snippet search command which can be run with CMD + Shift + P or just use CMD + Shift + R (CTRL + ALT + R for Windows & Linux) keybinding.
 
-To use that component, go back to your app.jsx and invoke the funciton, invoke the ocmponent. If you type a < then start typing the name of the component, you should see it pop up.
+To use that component, go back to your app.jsx and invoke the function, invoke the component. If you type a < then start typing the name of the component, you should see it pop up.
 
     function App() {
         return (
@@ -316,7 +316,7 @@ Import it at the top of your app.jsx file
 
     import { useState } from "react";
 
-make a new variable, after it make a function. The function is usually 'set' + the name of the variable. That variable will be equal to useState() and you'll pass useState the starting value.
+Make a new variable, after it make a function. The function is usually 'set' + the name of the variable. That variable will be equal to useState() and you'll pass useState the starting value.
 
     function App() {
         const [counter, setCounter] = useState(0);
