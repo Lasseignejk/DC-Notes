@@ -33,7 +33,7 @@ We are entering the body in JSON so the keys of the object, `username` and `pass
 
 ### Closer look at the `req` object
 
-Now that we've got Postman setup, we need to write our route. Before we get to far though, let's take a closer look at the `req` part of `(req, res)`. Before now, we've only used `res` -- `res.send("Hello World!")`. When we send information to the server, like in a `post` route, that information is set in the `req`.
+Now that we've got Postman setup, we need to write our route. Before we get too far though, let's take a closer look at the `req` part of `(req, res)`. Before now, we've only used `res` -- `res.send("Hello World!")`. When we send information to the server, like in a `post` route, that information is set in the `req`.
 
 First, we need to add this line to our `index.js` file. Put it <strong>above</strong> the routes but <strong>below</strong> the `const express`, `const app`, and `const PORT` lines at the top.
 
@@ -76,6 +76,8 @@ We just looked at the `req` object and we saw that the data we pass in the body 
 
     console.log(student.firstName) // "Bob"
 
+#### First way to write POST route
+
 We can use dot notation to access the information contained within the body of a request! Let's say a user is logging in. Here's the <strong>first</strong> way you could write the `post` route:
 
     app.post("/login_1", (req, res) => {
@@ -88,7 +90,7 @@ We can use dot notation to access the information contained within the body of a
 
 Let's break it down. On the second and third lines, we declare the variables `username` and `password` and we set them equal to `req.body.username` and `req.body.password` respectively. So the `username` variable will EQUAL whatever is inside of the `req.body` under the `username` key. If we change the username in Postman to be "MinionDave" instead of "FirstUser" and hit the route again in Postman, you'll see that "MinionDave" displays below.
 
-Typically, it's a good idea to have the variable on the backend be the same as the key in the body -- `const username` and `{"username": ""}` for example. If they happen to be different, you have to write the route like we did above. The important thing is that the `req.body` part has to match what the data looks like, where we entered it in Postman.
+Typically, it's a good idea to have the variable on the backend be the same as the key in the body -- `const username` and `{"username": ""}` for example. If they happen to be different, you have to write the route like we did above and you <strong>can't</strong> use the second way. The important thing is that the `req.body` part has to match what the data looks like, where we entered it in Postman.
 
     app.post("/login_1", (req, res) => {
         const user = req.body.username;
@@ -97,6 +99,8 @@ Typically, it's a good idea to have the variable on the backend be the same as t
             `Logging in user with these credentials: Username -- ${user}, Password -- ${pass}`
         )
     })
+
+#### Second way to write a POST route
 
 If the variable and the data match, though, like in the original example, there's a shortcut we can use. Let's say we're going to create a new user. Compare the route below to the route above:
 
@@ -107,18 +111,19 @@ If the variable and the data match, though, like in the original example, there'
         );
     });
 
-Did you spot the difference? Instead of writing out `const username = req.body.username` and doing the same for password, we've condensed it into one line -- `const {username, password} = req.body`. This does the same thing as the first way we learned, it just saves us some keystrokes! It's very handy when there's lots of information you need to send to the backend. We only have two things we're sending in this example, but maybe you're sending `form` data and the form has 20 fields! Instead of having to write out every variable, we can `destructure` the data using the `{ }` and save some time. Both ways work -- use whichever is more comfortable!
+Did you spot the difference? Instead of writing out `const username = req.body.username` and doing the same for password, we've condensed it into one line -- `const {username, password} = req.body`. This does the same thing as the first way we learned, it just saves us some keystrokes! It's very handy when there's lots of information you need to send to the backend. We only have two things we're sending in this example, but maybe you're sending `form` data and the form has 20 fields. Instead of having to write out every variable, we can `destructure` the data using the `{ }` and save some time. Both ways work -- use whichever is more comfortable!
 
 ### Creating a new user using `POST`
 
-Let's use what we know about `post` and `req.body` to add a new user to the `users` array!
+Let's use what we know about `post` and `req.body` to add a new user to the `users` array.
 
-    // Postman
+    // ********** Postman **********
     {
         "username": "FirstUser",
         "password": "1234password"
     }
 
+    // ********** Route **********
     app.post("/create_user", (req, res) => {
         const id = users.length + 1;
         users.push({ id, ...req.body });
@@ -140,7 +145,7 @@ When you hit the route, you should see a new user added to the end of the array!
         );
     });
 
-This route takes in a username and password. Then it finds the index of the user it's going to update by comparing the usernames of everyone in the `users` array against the username passed in the `req.body`. Finally, it updates the password and sends back a success.
+This route takes in a username and password. Then it finds the index of the user it's going to update by comparing the usernames of everyone in the `users` array against the username passed in the `req.body`. Finally, it updates the password and sends back a success message.
 
 ## DELETE
 
@@ -152,3 +157,7 @@ Let's use a `delete` route to delete a user from the array. We could do this by 
         users = filteredUsers
         res.send(users)
     })
+
+## Advanced Routes
+
+All of these routes are the bare minimum for CRUD -- Create, Read, Update, Delete. If we don't enter in exactly the right information, the code just breaks. Check out the [Advanced Routes](https://github.com/Lasseignejk/DC-Notes/tree/main/BackEnd/4--Routes/AdvancedRoutes) folder for some more in-depth examples!
