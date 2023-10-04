@@ -2,7 +2,7 @@
 
 📂 index.js
 
-🔗 [File on GitHub]()
+🔗 [File on GitHub](https://github.com/Lasseignejk/DC-Notes/blob/main/BackEnd/4--Routes/BasicRoutes/index.js)
 
 There are 4 routes we'll cover here -- `GET`, `POST`, `PUT`, and `DELETE`. At the top of the `index.js` file, I've created a variable called `users` which has dummy data in it. We'll be updating this variable using the routes below, like it's a database.
 

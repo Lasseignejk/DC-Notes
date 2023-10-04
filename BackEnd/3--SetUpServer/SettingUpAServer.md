@@ -2,7 +2,7 @@
 
 📂 index.js
 
-🔗 [File on GitHub]()
+🔗 [File on GitHub](https://github.com/Lasseignejk/DC-Notes/blob/main/BackEnd/3--SetUpServer/index.js)
 
 ## Step 1
 
